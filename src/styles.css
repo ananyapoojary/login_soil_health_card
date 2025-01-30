@@ -1,20 +1,33 @@
 body {
+    background: rgba(255, 255, 255) url('backbody.jpeg') no-repeat center center; /* 50% transparent background image */
+    background-size: cover; /* Ensure the image covers the entire screen */
+    min-height: 100vh; /* Full screen height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     text-align: center;
 }
-
 /* Apply the ombre effect to the container */
 .container {
-    background: linear-gradient(180deg, #ffffff, rgb(212, 242, 247)); /* Ombre effect from white to light green */
+    background: linear-gradient(180deg, rgb(255, 255, 255), #b6f4be); /* Ombre effect from white to light green */
     padding: 40px;
     border-radius: 10px; /* Optional: for rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow around the container */
     width: 100%;
     max-width: 400px; /* Adjust the max width of the container */
     margin: 20px auto; /* Center the container horizontally */
+    backdrop-filter: blur(100px); /* Optional: adds blur effect behind the background */
 }
 
+
+@media (max-width: 500px) {
+    .container {
+        padding: 20px;
+        max-width: 90%; /* 90% width on smaller screens */
+    }
+}
 
 /* Logo Styling */
 .emblem,
@@ -70,22 +83,17 @@ button:hover {
     background: darkgreen;
 }
 
+/* Disabled Submit Button */
+button:disabled {
+    background: grey;
+    cursor: not-allowed;
+}
+
 /* Red color for the asterisk (*) */
 .required {
     color: rgb(255, 0, 0);
     font-size: 18px;
     vertical-align: super; /* Make it appear in superscript */
-}
-
-/* Apply the ombre effect to the body */
-body {
-    background: linear-gradient(180deg, rgb(189, 231, 189), rgb(136, 204, 136)); /* Ombre effect from light green to darker green */
-    min-height: 100vh; /* Make sure it takes up the full screen */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    font-family: Arial, sans-serif;
 }
 
 .message.error {
@@ -96,3 +104,6 @@ body {
     color: rgb(51, 218, 81); /* Green color for success messages */
 }
 
+.message.info {
+    color: rgb(255, 165, 0); /* Orange color for validation info */
+}

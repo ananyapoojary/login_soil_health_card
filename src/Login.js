@@ -6,6 +6,7 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
+    const [isValidating, setIsValidating] = useState(false); // New state for validation status
 
     // Email validation function using Regex
     const validateEmail = (email) => {
@@ -16,10 +17,12 @@ function Login() {
     // Handling form submission
     const handleSubmit = (event) => {
         event.preventDefault();
+        setIsValidating(true); // Start validation
 
         // Validate email format
         if (!validateEmail(email)) {
             setMessage("Invalid email format!");
+            setIsValidating(false);
             return;
         }
 
@@ -29,7 +32,20 @@ function Login() {
         } else {
             setMessage("Invalid Credentials!");
         }
+        setIsValidating(false); // End validation
     };
+
+    const handleChangeEmail = (e) => {
+        setEmail(e.target.value);
+        setMessage(""); // Clear message when user types
+    };
+
+    const handleChangePassword = (e) => {
+        setPassword(e.target.value);
+        setMessage(""); // Clear message when user types
+    };
+
+    const isFormValid = validateEmail(email) && password.length > 0 && userType;
 
     return (
         <div className="container">
@@ -68,7 +84,7 @@ function Login() {
                     <input 
                         type="text" 
                         value={email} 
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={handleChangeEmail}
                         placeholder="Enter valid username" 
                         required 
                     />
@@ -80,21 +96,22 @@ function Login() {
                     <input 
                         type="password" 
                         value={password} 
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={handleChangePassword}
                         placeholder="Enter password" 
                         required 
                     />
                 </div>
 
                 {/* Submit Button */}
-                <button type="submit">Login</button>
+                <button type="submit" disabled={isValidating || !isFormValid}>
+                    {isValidating ? "Validating..." : "Login"}
+                </button>
             </form>
             
             {/* Display login message */}
-            <p className={`message ${message === "Invalid Credentials!" || message === "Invalid email format!" ? 'error' : 'success'}`}>
-    {message}
-</p>
-
+            <p className={`message ${message === "Invalid Credentials!" || message === "Invalid email format!" ? 'error' : message === "Validating..." ? 'info' : 'success'}`}>
+                {message || (isValidating && "Validating...")}
+            </p>
         </div>
     );
 }
