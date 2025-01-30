@@ -107,11 +107,18 @@ function Login() {
                     {isValidating ? "Validating..." : "Login"}
                 </button>
             </form>
-            
+
             {/* Display login message */}
             <p className={`message ${message === "Invalid Credentials!" || message === "Invalid email format!" ? 'error' : message === "Validating..." ? 'info' : 'success'}`}>
                 {message || (isValidating && "Validating...")}
             </p>
+
+            {/* User Registration Link */}
+            <div className="registration-link">
+                <p>
+                    <a href="/register" className="register-link">User Registration</a>
+                </p>
+            </div>
         </div>
     );
 }

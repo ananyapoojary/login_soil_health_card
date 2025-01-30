@@ -9,6 +9,7 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
 }
+
 /* Apply the ombre effect to the container */
 .container {
     background: linear-gradient(180deg, rgb(255, 255, 255), #b6f4be); /* Ombre effect from white to light green */
@@ -20,7 +21,6 @@ body {
     margin: 20px auto; /* Center the container horizontally */
     backdrop-filter: blur(100px); /* Optional: adds blur effect behind the background */
 }
-
 
 @media (max-width: 500px) {
     .container {
@@ -106,4 +106,19 @@ button:disabled {
 
 .message.info {
     color: rgb(255, 165, 0); /* Orange color for validation info */
+}
+
+/* User Registration Link Styling */
+.registration-link {
+    margin-top: 10px;
+}
+
+.register-link {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link:hover {
+    text-decoration: underline;
 }
