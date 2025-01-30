@@ -91,7 +91,10 @@ function Login() {
             </form>
             
             {/* Display login message */}
-            <p className="message">{message}</p>
+            <p className={`message ${message === "Invalid Credentials!" || message === "Invalid email format!" ? 'error' : 'success'}`}>
+    {message}
+</p>
+
         </div>
     );
 }

@@ -48,9 +48,14 @@ input, select {
     display: block;
 }
 
+input:focus, select:focus {
+    border-color: #007BFF; /* Blue color on focus */
+    outline: none; /* Remove default outline */
+}
+
 /* Submit Button */
 button {
-    background: green;
+    background: rgb(30, 54, 235);
     color: white;
     border: none;
     cursor: pointer;
@@ -82,3 +87,12 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
+
+.message.error {
+    color: rgb(255, 0, 0); /* Red color for error messages */
+}
+
+.message.success {
+    color: rgb(51, 218, 81); /* Green color for success messages */
+}
+
